@@ -14,12 +14,79 @@ CMyListCtrl::~CMyListCtrl()
 {
 }
 
-BEGIN_MESSAGE_MAP(CMyListCtrl, CListCtrl)
+BEGIN_MESSAGE_MAP(CMyListCtrl, CMFCListCtrl)
     ON_NOTIFY_REFLECT(LVN_BEGINDRAG, &CMyListCtrl::OnLvnBegindrag)
     ON_WM_MOUSEMOVE()
     ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
+BOOL CMyListCtrl::MoveRow(int from, int to)
+{
+	//Can't move to the same place, or from or to a negative index
+	if(from == to || from < 0 || to < 0)
+		return FALSE;
+	//First Copy the row to the new location
+	if(CopyRow(from, to))
+	{
+		//If we have just inserted a row before
+		//this one in the list, we need to increment
+		//our index.
+		if(from > to)
+			DeleteItem(from + 1);
+		else
+			DeleteItem(from);
+		return TRUE;
+	}
+	else
+		return FALSE;
+}
+BOOL CMyListCtrl::CopyRow(int from, int to)
+{	
+	//Can't move to the same place, or from or to a negative index
+	if(from == to || from < 0 || to < 0)
+		return FALSE;
+	//Copy the row to the new index
+	InsertItem(to, GetItemText(from, 0));
+	//If row has been inserted before original
+	//increment the original
+	if(from > to)
+		from++;
+	//Loop through subitems
+	for(int i = 1; i < 2; i++)
+	{
+		SetItemText(to, i, GetItemText(from, i));
+	}
+	return TRUE;
+}
+
+COLORREF CMyListCtrl::OnGetCellTextColor(int nRow, int nColum)
+{
+	//return CMFCListCtrl::OnGetCellTextColor(nRow, nColum);
+    return RGB(255, 0, 0);
+}
+
+COLORREF CMyListCtrl::OnGetCellBkColor(int nRow, int nColum)
+{
+	//return CMFCListCtrl::OnGetCellBkColor(nRow, nColum);
+    return RGB(0, 255, 0);
+}
+
+HFONT CMyListCtrl::OnGetCellFont(int nRow, int nColum, DWORD dwData)
+{
+		CFont* pFont = GetFont();
+		LOGFONT logFont = {0,};
+
+		pFont->GetLogFont(&logFont);
+
+        logFont.lfStrikeOut = TRUE;
+		//logFont.lfWeight = pHighlight->m_bBold ? FW_BOLD : 0;
+
+		if(m_font.m_hObject != NULL)
+			m_font.DeleteObject();
+
+		BOOL bFont = m_font.CreateFontIndirect(&logFont);
+		return (HFONT)m_font;
+}
 
 void CMyListCtrl::OnLvnBegindrag(NMHDR *pNMHDR, LRESULT *pResult)
 {
@@ -108,9 +175,8 @@ void CMyListCtrl::OnLButtonUp(UINT nFlags, CPoint point)
         delete m_pDragImages;
         m_pDragImages = NULL;
 
-        CString strText;
-        strText = GetItemText(m_nItemDrag, 0);
-        SetItemText(m_nItemDrop, 1, strText);
+        //MoveRow(m_nItemDrag, m_nItemDrop);    // only move in folder
+
         ::ReleaseCapture();
     }
 
@@ -219,7 +285,8 @@ BOOL CListPage::OnInitDialog()
 
     // TODO:  Add extra initialization here
     m_lcList.SetExtendedStyle(m_lcList.GetExtendedStyle() | LVS_EX_CHECKBOXES | LVS_EX_FULLROWSELECT);
-    //m_lcList.SetExtendedStyle(LVS_EX_TRACKSELECT | LVS_EX_ONECLICKACTIVATE);
+    SetWindowTheme(m_lcList.GetSafeHwnd(), _T("Explorer"), NULL);
+
     InitImageList();
     InitItems();
 

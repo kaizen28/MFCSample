@@ -6,7 +6,7 @@
 // 2. Full Row Selection
 // 3. Multi Selection
 
-class CMyListCtrl : public CListCtrl
+class CMyListCtrl : public CMFCListCtrl
 {
 public:
     CMyListCtrl();
@@ -19,6 +19,14 @@ public:
     CPoint m_ptOrigin;
     CPoint m_ptHotSpot;
     CSize m_sizeDelta;
+    CFont m_font;
+
+    BOOL MoveRow(int from, int to);
+    BOOL CopyRow(int from, int to);
+
+	virtual COLORREF OnGetCellTextColor(int nRow, int nColum);
+	virtual COLORREF OnGetCellBkColor(int nRow, int nColum);
+	virtual HFONT OnGetCellFont(int nRow, int nColum, DWORD dwData = 0UL);
 
     DECLARE_MESSAGE_MAP()
     afx_msg void OnLvnBegindrag(NMHDR *pNMHDR, LRESULT *pResult);
