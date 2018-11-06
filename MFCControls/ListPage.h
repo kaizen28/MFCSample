@@ -32,6 +32,9 @@ public:
     afx_msg void OnLvnBegindrag(NMHDR *pNMHDR, LRESULT *pResult);
     afx_msg void OnMouseMove(UINT nFlags, CPoint point);
     afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+    // Last Column Autosize
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnHdnEndtrack(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 // CListPage dialog

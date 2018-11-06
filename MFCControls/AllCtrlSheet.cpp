@@ -25,4 +25,5 @@ void CAllCtrlSheet::AddControlPages()
     AddPage(&m_treePage);
     AddPage(&m_listPage);
     AddPage(&m_othPage);
+    AddPage(&m_tbPage);
 }

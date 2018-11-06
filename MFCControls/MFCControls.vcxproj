@@ -193,6 +193,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ToolBarPage.h" />
     <ClInclude Include="TreePage.h" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +208,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ToolBarPage.cpp" />
     <ClCompile Include="TreePage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +228,7 @@
     <Image Include="res\okd.bmp" />
     <Image Include="res\okf.bmp" />
     <Image Include="res\oku.bmp" />
+    <Image Include="res\toolbar1.bmp" />
     <Image Include="res\treebird.bmp" />
     <Image Include="res\treebirdsel.bmp" />
     <Image Include="res\treedog.bmp" />

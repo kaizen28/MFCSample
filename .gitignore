@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MFCSample.v11.suo
+*.suo
+/MFCApplicationSDI/x64/Debug/MFCAppli.FF5AAB19.tlog
+/MFCApplicationSDI/x64/Debug
+/MFCControls/Debug
+/ipch
+/MFCControls/x64/Debug/MFCControls.tlog
+/x64/Debug

@@ -183,6 +183,23 @@ void CMyListCtrl::OnLButtonUp(UINT nFlags, CPoint point)
     CListCtrl::OnLButtonUp(nFlags, point);
 }
 
+void CMyListCtrl::OnSize(UINT nType, int cx, int cy)
+{
+    CListCtrl::OnSize(nType, cx, cy);
+
+    // TODO: Add your message handler code here
+    SetColumnWidth(GetHeaderCtrl().GetItemCount() - 1, LVSCW_AUTOSIZE_USEHEADER);
+}
+
+
+void CMyListCtrl::OnHdnEndtrack(NMHDR *pNMHDR, LRESULT *pResult)
+{
+    LPNMHEADER phdr = reinterpret_cast<LPNMHEADER>(pNMHDR);
+    // TODO: Add your control notification handler code here
+    SetColumnWidth(GetHeaderCtrl().GetItemCount() - 1, LVSCW_AUTOSIZE_USEHEADER);
+    *pResult = 0;
+}
+
 // CListPage dialog
 
 IMPLEMENT_DYNAMIC(CListPage, CPropertyPage)
