@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCControls", "MFCControls\MFCControls.vcxproj", "{E9C40D6C-B3B5-4A02-9A40-5E5EA198350D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCApplicationSDI", "MFCApplicationSDI\MFCApplicationSDI.vcxproj", "{FF5AAB19-6B6A-4A8A-8B61-98C8C7921AF4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeControl", "TreeControl\TreeControl.vcxproj", "{26366478-3254-4794-ACF8-26903087BB61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +33,19 @@ Global
 		{FF5AAB19-6B6A-4A8A-8B61-98C8C7921AF4}.Release|x64.Build.0 = Release|x64
 		{FF5AAB19-6B6A-4A8A-8B61-98C8C7921AF4}.Release|x86.ActiveCfg = Release|Win32
 		{FF5AAB19-6B6A-4A8A-8B61-98C8C7921AF4}.Release|x86.Build.0 = Release|Win32
+		{26366478-3254-4794-ACF8-26903087BB61}.Debug|x64.ActiveCfg = Debug|x64
+		{26366478-3254-4794-ACF8-26903087BB61}.Debug|x64.Build.0 = Debug|x64
+		{26366478-3254-4794-ACF8-26903087BB61}.Debug|x86.ActiveCfg = Debug|Win32
+		{26366478-3254-4794-ACF8-26903087BB61}.Debug|x86.Build.0 = Debug|Win32
+		{26366478-3254-4794-ACF8-26903087BB61}.Release|x64.ActiveCfg = Release|x64
+		{26366478-3254-4794-ACF8-26903087BB61}.Release|x64.Build.0 = Release|x64
+		{26366478-3254-4794-ACF8-26903087BB61}.Release|x86.ActiveCfg = Release|Win32
+		{26366478-3254-4794-ACF8-26903087BB61}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FCF097A-2F28-4F08-A861-408591595AEA}
 	EndGlobalSection
 EndGlobal
